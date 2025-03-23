@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import TasksTable from "../../components/task_table/TasksTable";
+import AddSpaceModal from "../../components/dialog_modals/AddSpaceModal";
 
 export default function Space() {
   const [spaceData, setSpaceData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showAddSpaceModal, setShowAddSpaceModal] = useState(false);
 
   const { spaceId } = useParams();
   const LOCAL_STORAGE_KEY = "spaceData";
@@ -42,6 +44,10 @@ export default function Space() {
       const updatedSpaceData = { ...spaceData, tasks: updatedTasks };
       setSpaceData(updatedSpaceData);
     }
+  };
+
+  const handleAddSpaceModalIsCancelled = () => {
+    setShowAddSpaceModal(false);
   };
 
   const handleUpdateTask = (updatedTask) => {
@@ -93,6 +99,11 @@ export default function Space() {
     setSpaceData(updatedSpace);
   };
 
+  const handleNewTaskData=(data)=>{
+    console.log("New Data 3:", data);
+    handleAddTask(data)
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -115,15 +126,7 @@ export default function Space() {
       <div className="text-right">
         <button
           type="button"
-          onClick={() =>
-            handleAddTask({
-              taskId: Date.now(), 
-              taskTitle: "New Task",
-              subTasks: [],
-              startDate: new Date().toISOString().split("T")[0],
-              endDate: new Date().toISOString().split("T")[0],
-              status: "pending",
-            })
+          onClick={() =>setShowAddSpaceModal(true)      
           }
           className="mb-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
         >
@@ -138,6 +141,14 @@ export default function Space() {
           onDeleteTask={handleDeleteTask}
         />
       </div>
+      {showAddSpaceModal && (
+        <AddSpaceModal
+          title={"Add Task"}
+          formType="task"
+          newTaskData={handleNewTaskData}
+          AddSpaceModalIsCancelled={handleAddSpaceModalIsCancelled}
+        />
+      )}
     </>
   );
 }

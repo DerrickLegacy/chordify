@@ -70,7 +70,7 @@ export default function Home() {
           )}
         </div>
         {showAddSpaceModal && (
-          <AddSpaceModal
+          <AddSpaceModal title={"Create Task Space"}
             AddSpaceModalIsCancelled={handleAddSpaceModalIsCancelled}
           />
         )}

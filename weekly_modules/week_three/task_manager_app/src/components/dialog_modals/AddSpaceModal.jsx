@@ -2,17 +2,17 @@ import React ,{useRef} from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
 import SpaceCreationForm from "../forms/SpaceCreationForm";
 
-export default function AddSpaceModal({ AddSpaceModalIsCancelled }) {
-  const formikRef = useRef(null); // Create a ref
+export default function AddSpaceModal({ AddSpaceModalIsCancelled ,title,formType,newTaskData}) {
+  const formikRef = useRef(null); 
+  const  handleNewTaskData=(data)=>{
+    console.log("New task 2:",data)
+    newTaskData(data);
+  }
 
   const handleCancelClick = () => {
     AddSpaceModalIsCancelled(false);
   };
-  const handleAddClick = () => {
-    if (formikRef.current) {
-      formikRef.current.handleSubmit(); // Trigger Formik's submit
-    }
-  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
@@ -27,7 +27,7 @@ export default function AddSpaceModal({ AddSpaceModalIsCancelled }) {
               <IoAddCircleOutline className="text-blue-500 text-2xl" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900">
-              Create Task Space
+              {title}
             </h3>
           </div>
           <button
@@ -39,7 +39,7 @@ export default function AddSpaceModal({ AddSpaceModalIsCancelled }) {
         </div>
 
         <div className="mt-4">
-        <SpaceCreationForm formikRef={formikRef} />
+        <SpaceCreationForm newTaskData={handleNewTaskData}  formType={formType}  onCancel={handleCancelClick} formikRef={formikRef} />
         </div>
 
         
