@@ -1,0 +1,210 @@
+[
+  {
+    "SpaceName": "Frontend Development",
+    "spaceId": "SP001",
+    "Description": "Handles UI/UX and user interactions.",
+    "TeamMember": [101, 102, 103, 104, 105],
+    "tasks": [
+      {
+        "taskId": 1,
+        "taskTitle": "Implement User Authentication",
+        "subTasks": [
+          { "value": "Design login page UI", "subtaskStatus": "pending" },
+          {
+            "value": "Develop authentication API calls",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Implement JWT token storage",
+            "subtaskStatus": "pending"
+          },
+          {
+            "value": "Setup password reset feature",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Test authentication workflow",
+            "subtaskStatus": "pending"
+          },
+          { "value": "Fix UI responsiveness", "subtaskStatus": "pending" }
+        ],
+        "startDate": "2024-03-01",
+        "endDate": "2024-03-15",
+        "status": "pending"
+      },
+      {
+        "taskId": 2,
+        "taskTitle": "Implement User Two FactorAuthentication",
+        "subTasks": [
+          { "value": "Design login page UI", "subtaskStatus": "pending" },
+          {
+            "value": "Develop authentication API calls",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Implement JWT token storage",
+            "subtaskStatus": "pending"
+          },
+          {
+            "value": "Setup password reset feature",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Test authentication workflow",
+            "subtaskStatus": "pending"
+          },
+          { "value": "Fix UI responsiveness", "subtaskStatus": "pending" }
+        ],
+        "startDate": "2024-06-01",
+        "endDate": "2024-06-15",
+        "status": "pending"
+      },
+      {
+        "taskId": 3,
+        "taskTitle": "Implement User Two FactorAuthentication",
+        "subTasks": [
+          { "value": "Design login page UI", "subtaskStatus": "pending" },
+          {
+            "value": "Develop authentication API calls",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Implement JWT token storage",
+            "subtaskStatus": "pending"
+          },
+          {
+            "value": "Setup password reset feature",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Test authentication workflow",
+            "subtaskStatus": "pending"
+          },
+          { "value": "Fix UI responsiveness", "subtaskStatus": "pending" }
+        ],
+        "startDate": "2024-06-01",
+        "endDate": "2024-06-15",
+        "status": "completed"
+      }
+    ]
+  },
+  {
+    "SpaceName": "Backend Development",
+    "spaceId": "SP002",
+    "Description": "Handles server-side logic and database management.",
+    "TeamMember": [106, 107, 108, 109, 110],
+    "tasks": [
+      {
+        "taskId": 2,
+        "taskTitle": "Build User Management System",
+        "subTasks": [
+          { "value": "Design user schema", "subtaskStatus": "complete" },
+          { "value": "Develop CRUD operations", "subtaskStatus": "pending" },
+          {
+            "value": "Integrate authentication module",
+            "subtaskStatus": "pending"
+          },
+          { "value": "Optimize database queries", "subtaskStatus": "complete" },
+          { "value": "Set up role-based access", "subtaskStatus": "pending" },
+          { "value": "Write API documentation", "subtaskStatus": "pending" }
+        ],
+        "startDate": "2024-03-05",
+        "endDate": "2024-03-20",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "SpaceName": "Mobile App Development",
+    "spaceId": "SP003",
+    "Description": "Focuses on Android and iOS app development.",
+    "TeamMember": [111, 112, 113, 114, 115],
+    "tasks": [
+      {
+        "taskId": 3,
+        "taskTitle": "Develop Profile Management Feature",
+        "subTasks": [
+          { "value": "Create user profile UI", "subtaskStatus": "pending" },
+          {
+            "value": "Implement profile update functionality",
+            "subtaskStatus": "pending"
+          },
+          {
+            "value": "Optimize image upload process",
+            "subtaskStatus": "complete"
+          },
+          { "value": "Connect with backend API", "subtaskStatus": "pending" },
+          {
+            "value": "Add profile privacy settings",
+            "subtaskStatus": "complete"
+          },
+          {
+            "value": "Ensure cross-platform compatibility",
+            "subtaskStatus": "pending"
+          }
+        ],
+        "startDate": "2024-02-20",
+        "endDate": "2024-03-10",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "SpaceName": "Quality Assurance",
+    "spaceId": "SP004",
+    "Description": "Responsible for testing and debugging.",
+    "TeamMember": [116, 117, 118, 119, 120],
+    "tasks": [
+      {
+        "taskId": 4,
+        "taskTitle": "Perform System Testing",
+        "subTasks": [
+          { "value": "Conduct unit testing", "subtaskStatus": "complete" },
+          {
+            "value": "Perform integration testing",
+            "subtaskStatus": "pending"
+          },
+          { "value": "Run end-to-end tests", "subtaskStatus": "pending" },
+          { "value": "Report and document bugs", "subtaskStatus": "complete" },
+          { "value": "Verify bug fixes", "subtaskStatus": "pending" },
+          { "value": "Generate test reports", "subtaskStatus": "pending" }
+        ],
+        "startDate": "2024-02-15",
+        "endDate": "2024-03-05",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "SpaceName": "Project Management",
+    "spaceId": "SP005",
+    "Description": "Oversees project planning and coordination.",
+    "TeamMember": [121, 122, 123, 124, 125],
+    "tasks": [
+      {
+        "taskId": 5,
+        "taskTitle": "Prepare Sprint Planning ghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+        "subTasks": [
+          {
+            "value": "Gather project requirements",
+            "subtaskStatus": "complete"
+          },
+          { "value": "Define sprint objectives", "subtaskStatus": "pending" },
+          {
+            "value": "Assign tasks to team members",
+            "subtaskStatus": "pending"
+          },
+          {
+            "value": "Review previous sprint performance",
+            "subtaskStatus": "complete"
+          },
+          { "value": "Create sprint backlog", "subtaskStatus": "pending" },
+          { "value": "Finalize sprint schedule", "subtaskStatus": "pending" }
+        ],
+        "startDate": "2024-02-10",
+        "endDate": "2024-02-25",
+        "status": "pending"
+      }
+    ]
+  }
+]
