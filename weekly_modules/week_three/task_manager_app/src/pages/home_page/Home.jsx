@@ -55,7 +55,7 @@ export default function Home() {
             Add Space
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 mt-3">
           {taskSpacesDataToDisplay.length !== 0 ? (
             taskSpacesDataToDisplay.map((space) => (
               <SpaceCard

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function SpaceCard({spaceID,SpaceName,Description}) {
     const url ="manage-space-/" + spaceID;
   return (
-    <div className="mb-6 max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+    <div className="mb-6 sm:max-w-sm max-w-sm md:max-w-md rounded overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
       <div className="px-6 py-4">
         <div className="font-bold text-2xl mb-2">{SpaceName}</div>
         <p className="text-gray-700 text-base overflow-hidden overflow-ellipsis line-clamp-3 min-h-24 max-h-24">
