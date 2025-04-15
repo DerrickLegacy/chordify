@@ -1,8 +1,19 @@
-import React from "react";
+import React,{useRef} from "react";
+import { useScrollVisibility } from "../hooks/useScrollVisibility";
 
 export default function Testimonials() {
+  const { ref: boxRef, style: visibilityStyle } = useScrollVisibility({
+    fadeStart: 0.2,
+    fadeEnd: 0.8,
+    minScale: 0.75,
+    transitionDuration: 900,
+    animationDirection: 'right' 
+  });  
   return (
-    <section className="bg-[#fff8f7] py-16">
+    <section
+    ref={boxRef}
+    style={visibilityStyle}
+    className="bg-[#fff8f7] py-16">
       <div className="px-6 md:px-12 mx-auto max-w-7xl">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-[#c0392b]">

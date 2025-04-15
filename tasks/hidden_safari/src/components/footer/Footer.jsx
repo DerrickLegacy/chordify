@@ -2,61 +2,69 @@ import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { RiYoutubeFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import FooterHeader from "./FooterHeader";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-amber-700 h-60 flex flex-col">
-      <div className="flex items-center justify-center mt-4">
-        <h1 className="text-4xl text-black font-bold">Hidden Safari</h1>
+    <footer className="bg-amber-700 py-8 px-4">
+      {/* Title */}
+      <div className="flex justify-center mb-4">
+        <h1 className="text-3xl sm:text-4xl text-white font-bold">
+          Hidden Safari
+        </h1>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 w-10/12 sm:w-5/12 mx-auto mt-4 text-black font-bold text-center">
-        <div className="hover:text-amber-300">Teams</div>
-        <div className="hover:text-amber-300">About</div>
-        <div className="hover:text-amber-300">Events</div>
-        <div className="hover:text-amber-300">Contact Us</div>
-        <div className="hover:text-amber-300">Terms and Conditions</div>
+      {/* Navigation Links */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-4 w-full max-w-4xl mx-auto text-white font-bold text-center mb-6">
+        <FooterHeader title={"Home"} url={"/"} />
+        <FooterHeader title={"Teams"} url={"/team"} />
+        <FooterHeader title={"Events"} url={"/events"} />
+        <FooterHeader title={"About"} url={"/about"} />
+        <FooterHeader title={"Contact Us"} url={"/contact"} />
+        <FooterHeader title={"Privacy"} url={"/privacy-policy"} />
+        <FooterHeader title={"Terms and Conditions"} url={"/terms-and-conditions"} />
       </div>
 
-      <div className="grid grid-cols-2 w-full mt-4 text-black font-bold">
-        <div className="ml-96">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-5xl mx-auto px-4 gap-4">
+        <div className="w-full md:w-auto">
           <input
-            className="shadow border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full md:w-64 py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
             id="search"
             type="text"
             placeholder="Search"
           />
         </div>
 
-        <div className="mr-96 flex justify-end items-center space-x-4">
+        <div className="flex justify-center space-x-6">
           <a
             href="#"
             aria-label="LinkedIn"
-            className="text-black font-bold hover:text-amber-300"
+            className="text-white hover:text-amber-300"
           >
             <FaLinkedin size={24} />
           </a>
           <a
             href="#"
             aria-label="Facebook"
-            className="text-black font-bold hover:text-amber-300"
+            className="text-white hover:text-amber-300"
           >
             <FaFacebook size={24} />
           </a>
-          <a
-            href="#"
+          <Link
+            to="#"
             aria-label="YouTube"
-            className="text-black font-bold hover:text-amber-300"
+            className="text-white hover:text-amber-300"
           >
             <RiYoutubeFill size={24} />
-          </a>
+          </Link>
         </div>
       </div>
 
-      <div className="mt-auto flex justify-center pb-4">
-        <p className="text-black font-bold text-sm">
+      <div className="mt-6 flex justify-center">
+        <p className="text-white font-bold text-sm text-center">
           Copyright © Hidden Safari {currentYear}
         </p>
       </div>

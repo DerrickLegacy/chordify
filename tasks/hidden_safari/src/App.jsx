@@ -10,12 +10,14 @@ import Contact from "./pages/contact/Contact";
 import TeamOne from "./pages/team/TeamOne";
 import TeamTwo from "./pages/team/TeamTwo";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import PrivacyPolicy from "./pages/policy/PrivacyPolicy";
+import TermsAndConditions from "./pages/policy/TermsAndConditions";
 
 function App() {
   return (
     <BrowserRouter>
       <TopHeader />
-      <div className="min-h-[72vh]">
+      <div className="min-h-[77vh]">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
@@ -34,6 +36,8 @@ function App() {
             }
           />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="*" element={<h4>404 - Page Not Found</h4>} />
         </Routes>
       </div>
