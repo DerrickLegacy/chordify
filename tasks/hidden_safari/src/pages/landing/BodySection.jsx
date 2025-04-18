@@ -3,14 +3,11 @@ import Testimonials from "../../components/testimonials/Testimonials";
 import Activities from "../../components/activities/Activities";
 import HighlightedEvents from "../../components/highlightedEvents/HighlightedEvents";
 import Videos from "../../components/videos/Videos";
-import my_activities from "../../assets/activities";
 import my_camps from "../../assets/camps";
 import useAxiosGetFetch from "../../components/api_methods/events/useAxiosGetFetch";
 
 export default function BodySection() {
-  const boxRef = useRef(null);
   const [camps, setCamps] = useState(my_camps);
-  const [activities, setActivities] = useState(my_activities);
 
   const snowTrekUrl =
     "http://54.210.95.246:3005/api/v1/events/snow-treks-events";
@@ -21,6 +18,13 @@ export default function BodySection() {
   const specialEventsUrl =
     "http://54.210.95.246:3005/api/v1/events/special-events";
 
+  const monsoonTrekingUrl =
+    "http://54.210.95.246:3005/api/v1/events/monsoon-events";
+
+  const highlightedEventUrl =
+    "http://54.210.95.246:3005/api/v1/events/highlighted-events";
+
+    
   const {
     response: trekResponse,
     loading: trekLoading,
@@ -38,16 +42,39 @@ export default function BodySection() {
     loading: adventureLoading,
     error: adventureError,
   } = useAxiosGetFetch(epicAdventureUrl);
+
   const {
     response: specialEventsUrlResponse,
     loading: specialEventsUrlLoading,
     error: specialEventsUrlError,
   } = useAxiosGetFetch(specialEventsUrl);
 
-  console.log("Trek Response:", my_activities); // Check the actual structure
+  const {
+    response: monsoonWindUrlResponse,
+    loading: monsoonWindUrlLoading,
+    error: monsoonWindUrlError,
+  } = useAxiosGetFetch(monsoonTrekingUrl);
 
-  const isLoading = trekLoading || summerEventLoading || adventureLoading;
-  const hasError = trekError || summerEventError || adventureError;
+  const {
+    response: highlightedEvenUrlResponse,
+    loading: highlightedEvenUrlLoading,
+    error: highlightedEvenUrlError,
+  } = useAxiosGetFetch(highlightedEventUrl);
+
+
+  const isLoading =
+    trekLoading ||
+    summerEventLoading ||
+    adventureLoading ||
+    specialEventsUrlLoading ||
+    monsoonWindUrlLoading||highlightedEvenUrlLoading;
+
+  const hasError =
+    trekError ||
+    summerEventError ||
+    adventureError ||
+    specialEventsUrlError ||
+    monsoonWindUrlError||highlightedEvenUrlError;
 
   if (isLoading)
     return <div className="text-center py-20">Loading events...</div>;
@@ -59,8 +86,9 @@ export default function BodySection() {
     );
 
   return (
+
     <div className="space-y-16 md:space-y-1">
-      <HighlightedEvents camps={camps} />
+      <HighlightedEvents highlightedEvents={highlightedEvenUrlResponse} camps={camps} />
 
       {trekResponse &&
         Array.isArray(trekResponse) &&
@@ -72,7 +100,7 @@ export default function BodySection() {
           />
         )}
 
-      {summerEventResponse &&
+{summerEventResponse &&
         Array.isArray(summerEventResponse) &&
         summerEventResponse.length > 0 && (
           <Activities
@@ -99,6 +127,16 @@ export default function BodySection() {
           <Activities
             activities={specialEventsUrlResponse}
             activityTitile="Special Events"
+            activityDescription="Join us for unique, limited-time gatherings that celebrate remarkable occasions"
+          />
+        )}
+
+      {monsoonWindUrlResponse &&
+        Array.isArray(monsoonWindUrlResponse) &&
+        monsoonWindUrlResponse.length > 0 && (
+          <Activities
+            activities={monsoonWindUrlResponse}
+            activityTitile="Monsoon Treks"
             activityDescription="Join us for unique, limited-time gatherings that celebrate remarkable occasions"
           />
         )}

@@ -1,8 +1,31 @@
 import React from "react";
 import AnimatedCard from "../../components/card/AnimatedCard";
 import SectionHeader from "../../components/section_header/SectionHeader";
+import useAxiosGetFetch from "../../components/api_methods/events/useAxiosGetFetch";
 
 export default function Contact() {
+  const aboutUsUrl =
+    "http://54.210.95.246:3005/api/v1/contact";
+
+  const {
+    response: contactUsResponses,
+    loading: contactUsLoading,
+    error: contactUsError,
+  } = useAxiosGetFetch(aboutUsUrl);
+
+  const isLoading = contactUsLoading;
+
+  const hasError = contactUsError;
+
+  if (isLoading)
+    return <div className="text-center py-20">Loading events...</div>;
+  if (hasError)
+    return (
+      <div className="text-center py-20 text-red-500">
+        Error loading data. Please try again later.
+      </div>
+    );
+
   const cards = [
     {
       id: 1,
@@ -32,16 +55,27 @@ export default function Contact() {
           minorText={pageDetails.minorText}
           description={pageDetails.description}
         />
+         {/* sm:max-h-7 max-w-6xl mx-auto */}
 
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-8 sm:max-h-7 max-w-6xl mx-auto">
-          {cards.map((card) => (
-            <AnimatedCard
-              key={card.id}
-              title={card.title}
-              description={card.description}
-              className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-shadow"
-            />
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
+          {contactUsResponses &&
+            Array.isArray(contactUsResponses) &&
+            contactUsResponses.length > 0 && (
+              contactUsResponses.map((contactUsResponse,index) => (
+                <AnimatedCard
+                  key={index}
+                  title={contactUsResponse.name}
+                  description={contactUsResponse.name}
+                  address={contactUsResponse.address}
+                  office_timings={contactUsResponse.office_timings}
+                  contact_numbers={contactUsResponse.contact_numbers}
+                  className="bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-shadow"
+                />
+              ))
+            )}
+
+
+          
         </div>
       </div>
     </section>

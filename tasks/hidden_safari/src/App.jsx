@@ -12,19 +12,27 @@ import TeamTwo from "./pages/team/TeamTwo";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import PrivacyPolicy from "./pages/policy/PrivacyPolicy";
 import TermsAndConditions from "./pages/policy/TermsAndConditions";
+import Login from "./pages/auth/Login";
+import MainAuthPage from "./pages/auth/MainAuthPage";
 
 function App() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   return (
     <BrowserRouter>
       <TopHeader />
       <div className="min-h-[77vh]">
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<MainAuthPage />} />
+          <Route path="/register" element={<MainAuthPage />} />
           <Route
             path="/*"
             element={
               <ProtectedRoute>
                 <Routes>
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/contact" element={<Contact />} />
                   <Route path="/events" element={<Events />} />
                   <Route path="/about" element={<AboutUs />} />
                   <Route path="/team" element={<Team />}>
@@ -35,9 +43,10 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
           <Route path="*" element={<h4>404 - Page Not Found</h4>} />
         </Routes>
       </div>

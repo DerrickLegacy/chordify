@@ -6,9 +6,14 @@ import {
   MdArrowOutward,
 } from "react-icons/md";
 
-export default function AnimatedCard({ title, description }) {
+export default function AnimatedCard({
+  title,
+  description,
+  address,
+  office_timings,
+  contact_numbers,
+}) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
   return (
     <div
       ref={ref}
@@ -24,20 +29,24 @@ export default function AnimatedCard({ title, description }) {
       <div className="flex items-start mb-4">
         <MdOutlineLocationOn className="text-[#e27160] text-xl mt-1 mr-3 flex-shrink-0" />
         <div>
-          <p className="text-gray-600">308, University, Above Chocolate Room</p>
-          <p className="text-gray-600">ABC Cross Roads, XYZ,</p>
-          <p className="text-gray-600">XXX, - 3X00X9</p>
+          <p className="text-gray-600">{address}</p>
         </div>
       </div>
 
       <div className="flex items-center mb-4">
         <MdOutlineSchedule className="text-[#e27160] text-xl mr-3" />
-        <p className="text-gray-600">Office Timings: 11AM to 8PM</p>
+        <p className="text-gray-600">Office Timings: {office_timings}</p>
       </div>
 
       <div className="flex items-center mb-6">
         <MdOutlinePhone className="text-[#e27160] text-xl mr-3" />
-        <p className="text-gray-600">91-XXX6475XXX</p>
+        <ul>
+          {contact_numbers.map((number, index) => (
+            <li key={index} className="text-gray-600">
+              {number}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="text-right">
         <a

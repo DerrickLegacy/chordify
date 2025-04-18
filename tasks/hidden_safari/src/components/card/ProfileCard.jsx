@@ -4,11 +4,10 @@ import { FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 export default function ProfileCard({ profile }) {
   return (
     <article className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group flex flex-col h-full">
-      {/* Image section - full width and height */}
       <div className="relative h-96 w-full">
         {profile.image ? (
           <img
-            src={`/images/${profile.image}`}
+            src={`${profile.image}`}
             alt={profile.name}
             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
           />
@@ -44,21 +43,21 @@ export default function ProfileCard({ profile }) {
         <div className="flex justify-center space-x-4 mb-6">
           <a
             href="#"
-            className="text-gray-500 hover:text-[#e27160] transition-colors"
+            className="text-[#0077b5] hover:text-[#e27160] transition-colors"
             aria-label="LinkedIn"
           >
             <FaLinkedin className="text-xl" />
           </a>
           <a
             href="#"
-            className="text-gray-500 hover:text-[#e27160] transition-colors"
-            aria-label="Email"
+            className="text-[#D44638] hover:text-[#e27160] transition-colors"
+            aria-label="Gmail"
           >
             <FaEnvelope className="text-xl" />
           </a>
           <a
             href="#"
-            className="text-gray-500 hover:text-[#e27160] transition-colors"
+            className="text-[#34B7F1] hover:text-[#e27160] transition-colors"
             aria-label="Phone"
           >
             <FaPhone className="text-xl" />

@@ -1,14 +1,17 @@
-import { Navigate } from "react-router-dom";
-import { useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-const [logginStatus, setLogginStatus]= useState(true)
-if(logginStatus==false){
-return <Navigate to="/login" replace />
-}
+  const location = useLocation();
+  const userData = localStorage.getItem("hidden_safari_user");
+  const user = userData ? JSON.parse(userData) : null;
 
-return children
+  const currentUrl = location.pathname;
 
+  if (!user || !user.loggedIn) {
+    return <Navigate to="/login" replace state={{ from: currentUrl }} />;
+  }
+
+  return children;
 };
 
 export default ProtectedRoute;

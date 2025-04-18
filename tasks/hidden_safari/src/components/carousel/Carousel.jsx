@@ -38,7 +38,7 @@ const Carousel = ({ images }) => {
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
           >
             <img
-              src={`/images/${image}`}
+              src={`${image}`}
               alt={`Slide ${index}`}
               className="w-full h-full object-cover"
             />

@@ -8,7 +8,7 @@ export default function RecommendedCamp({ campName, image }) {
     <div className="relative bg-white shadow-lg rounded-2xl overflow-hidden w-96 max-w-lg">
       <div className="relative min-h-[400px] w-full flex flex-col justify-end p-10">
         <img
-          src={`/images/${image}`}
+          src={`${image}`}
           alt={campName}
           className="absolute inset-0 w-full h-full object-cover grayscale-25 hover:grayscale-75"
         />
