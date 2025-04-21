@@ -9,7 +9,7 @@ export default function HeaderBackgroundImage() {
       bg-[url('/images/man_climb.jpg')] bg-cover bg-center bg-no-repeat backdrop-blur-lg
       before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/70 before:to-transparent before:z-0 z-10"
     >
-      <div className="relative z-10 px-8 md:px-16 lg:px-24 py-10">
+      <div className="relative z-10 px-8 md:px-16 lg:px-24 md:py-10 py-57">
         <div className="w-full flex justify-start items-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold text-left drop-shadow-lg">
             Experience Nature

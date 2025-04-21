@@ -1,8 +1,13 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Register({}) {
+  const notify = () => toast.success("Registration successful!");
+  const navigate = useNavigate();
+
   return (
     <>
       <Formik
@@ -16,10 +21,27 @@ export default function Register({}) {
             .email("Invalid email address")
             .required("Required"),
         })}
-        onSubmit={(values, { setSubmitting }) => {
-          localStorage.setItem("hidden_safari_user", JSON.stringify(values));
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          let existingUserData = localStorage.getItem("hidden_safari_user");
+          let users = [];
+
+          if (existingUserData) {
+            try {
+              users = JSON.parse(existingUserData);
+              if (!Array.isArray(users)) users = [];
+            } catch (e) {
+              users = [];
+            }
+          }
+
+          users.push(values);
+          localStorage.setItem("hidden_safari_user", JSON.stringify(users));
+
           setTimeout(() => {
+            notify();
+            resetForm();
             setSubmitting(false);
+            navigate("/login");
           }, 400);
         }}
       >

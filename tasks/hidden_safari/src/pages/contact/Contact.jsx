@@ -55,9 +55,8 @@ export default function Contact() {
           minorText={pageDetails.minorText}
           description={pageDetails.description}
         />
-         {/* sm:max-h-7 max-w-6xl mx-auto */}
 
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {contactUsResponses &&
             Array.isArray(contactUsResponses) &&
             contactUsResponses.length > 0 && (

@@ -5,7 +5,7 @@ export default function Videos() {
   return (
     <>
       <section className="bg-[#eeada6] py-16">
-        <div className="px-6 md:px-12 max-w-[80%] mx-auto">
+        <div className="px-0 md:px-12 max-w-[80%] mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold text-[#c0392b]">
               Experience Yourself

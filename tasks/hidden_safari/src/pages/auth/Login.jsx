@@ -2,8 +2,13 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Login({ toggleAuthPages }) {
+  const notify = () => toast("message");
+  const notifySuccess = (msg) => toast.success(msg);
+  const notifyError = (msg) => toast.error(msg);
+
   const navigate = useNavigate();
   return (
     <>
@@ -16,39 +21,51 @@ export default function Login({ toggleAuthPages }) {
             .required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          const user = localStorage.getItem("hidden_safari_user");
+          const usersJson = localStorage.getItem("hidden_safari_user");
 
-          if (user) {
-            let parsedUser = JSON.parse(user);
+          if (usersJson) {
+            const userObj = JSON.parse(usersJson);
 
-            if (
-              parsedUser.email === values.email &&
-              parsedUser.password === values.password
-            ) {
-              parsedUser = { ...parsedUser, loggedIn: true };
+            // Convert the object to an array (exclude non-numeric keys)
+            const usersArray = Object.keys(userObj)
+              .filter((key) => !isNaN(key))
+              .map((key) => userObj[key]);
+
+            const foundUserIndex = usersArray.findIndex(
+              (u) => u.email === values.email && u.password === values.password
+            );
+
+            if (foundUserIndex !== -1) {
+              const updatedUsersArray = usersArray.map((user, index) => ({
+                ...user,
+                loggedIn: index === foundUserIndex,
+              }));
+
+              const newUserObj = {};
+              updatedUsersArray.forEach((user, i) => {
+                newUserObj[i] = user;
+              });
+
+              newUserObj.loggedIn = true;
+
               localStorage.setItem(
                 "hidden_safari_user",
-                JSON.stringify(parsedUser)
+                JSON.stringify(newUserObj)
               );
-              alert("Login Successful");
+
+
+              localStorage.setItem(
+                "hiddenSafariLoggedInUse_email",
+                JSON.stringify(values.email)
+              );
+
+              notifySuccess("Login Successful");
               navigate("/");
             } else {
-              parsedUser = { ...parsedUser, loggedIn: false };
-              localStorage.setItem(
-                "hidden_safari_user",
-                JSON.stringify(parsedUser)
-              );
-              alert("Invalid email or password");
-              navigate("/login");
+              notifyError("Invalid email or password");
             }
           } else {
-            const parsedUser = { loggedIn: false };
-            localStorage.setItem(
-              "hidden_safari_user",
-              JSON.stringify(parsedUser)
-            );
-            alert("User not found");
-            navigate("/login");
+            notifyError("No registered users found");
           }
 
           setTimeout(() => {

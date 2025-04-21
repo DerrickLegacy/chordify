@@ -3,9 +3,10 @@ import { useInView } from "react-intersection-observer";
 import SectionHeader from "../../components/section_header/SectionHeader";
 import TextDisplayCard from "../../components/card/TextDisplayCard";
 import useAxiosGetFetch from "../../components/api_methods/events/useAxiosGetFetch";
+import { API_URL } from "../../config/url";
 
 export default function AboutUs() {
-  const aboutUsUrl = "http://54.210.95.246:3005/api/v1/info/about-us";
+  const aboutUsUrl = API_URL.ABOUT
 
   const {
     response: aboutUsResponse,

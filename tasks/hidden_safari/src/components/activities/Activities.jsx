@@ -42,7 +42,7 @@ export default function Activities({
   };
 
   return (
-    <section className={`py-8 ${toggleBackgroundColor ? "bg-[#fce9e6]" : ""}`}>
+    <section className={`py-0 md:py-8 ${toggleBackgroundColor ? "bg-[#fce9e6]" : ""}`}>
       <div className="px-6 md:px-12 mx-auto max-w-[85%]">
         <div ref={boxRef} style={visibilityStyle} className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-[#c0392b]">
@@ -52,10 +52,10 @@ export default function Activities({
             {activityDescription}
           </h3>
 
-          <div className="relative mt-10">
+          <div className="relative  mt-3 md:mt-10">
             <button
               onClick={() => scroll("left", 0)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-white hover:bg-gray-100 border border-gray-300 rounded-full shadow-md transition"
+              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 p-2 bg-white hover:bg-gray-100 border border-gray-300 rounded-full shadow-md transition"
             >
               <ChevronLeft size={24} className="text-gray-700" />
             </button>
@@ -64,7 +64,7 @@ export default function Activities({
               ref={(el) => (scrollRefs.current[0] = { current: el })}
               className="overflow-x-auto hide-scroll-bar scroll-smooth"
             >
-              <div className="flex gap-6 px-8 min-w-max justify-center my-7">
+              <div className="flex gap-6 px-2 md:px-8 min-w-max justify-center my-7">
                 {activities.map((data, i) => (
                   <div
                     key={i}

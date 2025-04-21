@@ -7,8 +7,8 @@ import { FaRegStarHalfStroke } from "react-icons/fa6";
 
 export default function Testimonials() {
   const { ref: boxRef, style: visibilityStyle } = useScrollVisibility({
-    fadeStart: 0.2,
-    fadeEnd: 0.8,
+    fadeStart: 0.1,
+    fadeEnd: 0.2,
     minScale: 0.75,
     transitionDuration: 900,
     animationDirection: "right",

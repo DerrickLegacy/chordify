@@ -11,13 +11,19 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 export default function TopHeader() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // NEW
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+
   const userData = localStorage.getItem("hidden_safari_user");
   const parsedUser = userData ? JSON.parse(userData) : null;
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen); // NEW
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const handleShowMyProfile = () => {
+    setDropdownOpen(false);
+    navigate("/user-profile");
+  };
 
   const handleSignOut = () => {
     setDropdownOpen(false);
@@ -36,30 +42,58 @@ export default function TopHeader() {
   return (
     <header className="fixed z-50 w-full bg-[#e27160] shadow-md">
       <div className="flex justify-between items-center px-6 py-4">
-        <Link to="/" className="text-3xl text-white font-bold">HiddenSafari</Link>
+        {/* Logo + Title */}
+        <Link
+          to="/"
+          className="flex items-center space-x-2 text-3xl text-white font-bold"
+        >
+          <img
+            src="/images/summer-logo_54199-1862.avif"
+            alt="Hidden Safari Logo"
+            className="h-10 md:h-14 w-auto border-8 border-white rounded-full"
+          />
+          <span>HiddenSafari</span>
+        </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 items-center relative">
-          <Link to="/" className="flex items-center space-x-2 text-white font-semibold">
+          <Link
+            to="/"
+            className="flex items-center space-x-2 text-white font-semibold text-lg hover:underline hover:text-yellow-100 transition-colors"
+          >
             <FaHouseChimneyWindow />
             <span>Home</span>
           </Link>
-          <Link to="/events" className="flex items-center space-x-2 text-white font-semibold">
+          <Link
+            to="/events"
+            className="flex items-center space-x-2 text-white font-semibold text-lg hover:underline hover:text-yellow-100 transition-colors"
+          >
             <FaMountain />
             <span>Events</span>
           </Link>
-          <Link to="/team" className="flex items-center space-x-2 text-white font-semibold">
+          <Link
+            to="/team"
+            className="flex items-center space-x-2 text-white font-semibold text-lg hover:underline hover:text-yellow-100 transition-colors"
+          >
             <FaPeopleGroup />
             <span>Team</span>
           </Link>
-          <Link to="/about" className="flex items-center space-x-2 text-white font-semibold">
+          <Link
+            to="/about"
+            className="flex items-center space-x-2 text-white font-semibold text-lg hover:underline hover:text-yellow-100 transition-colors"
+          >
             <FaTable />
             <span>About</span>
           </Link>
-          <Link to="/contact" className="flex items-center space-x-2 text-white font-semibold">
+          <Link
+            to="/contact"
+            className="flex items-center space-x-2 text-white font-semibold text-lg hover:underline hover:text-yellow-100 transition-colors"
+          >
             <FaPhone />
             <span>Contact</span>
           </Link>
 
+          {/* User Dropdown */}
           {parsedUser?.loggedIn && (
             <div className="relative">
               <button
@@ -85,8 +119,17 @@ export default function TopHeader() {
                 <ul className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
                   <li>
                     <button
-                      onClick={handleSignOut}
+                      onClick={handleShowMyProfile}
                       className="w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 text-left"
+                    >
+                      My Profile
+                    </button>
+                  </li>
+                  <hr />
+                  <li>
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 text-left "
                     >
                       Sign out
                     </button>
@@ -107,28 +150,49 @@ export default function TopHeader() {
         </div>
       </div>
 
+      {/* Mobile Nav Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-6 pb-4 space-y-2 bg-[#e27160]">
-          <Link to="/" className="block text-white font-semibold" onClick={() => setMobileMenuOpen(false)}>
+        <div className="md:hidden px-6 pb-4 space-y-3 bg-[#e27160]">
+          <Link
+            to="/"
+            className="block text-white font-semibold text-lg hover:underline"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Home
           </Link>
-          <Link to="/events" className="block text-white font-semibold" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            to="/events"
+            className="block text-white font-semibold text-lg hover:underline"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Events
           </Link>
-          <Link to="/team" className="block text-white font-semibold" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            to="/team"
+            className="block text-white font-semibold text-lg hover:underline"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Team
           </Link>
-          <Link to="/about" className="block text-white font-semibold" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            to="/about"
+            className="block text-white font-semibold text-lg hover:underline"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             About
           </Link>
-          <Link to="/contact" className="block text-white font-semibold" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            to="/contact"
+            className="block text-white font-semibold text-lg hover:underline"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Contact
           </Link>
 
           {parsedUser?.loggedIn && (
             <button
               onClick={handleSignOut}
-              className="w-full text-left text-red-200 font-semibold hover:underline"
+              className="w-full text-left text-red-200 font-semibold text-lg hover:underline"
             >
               Sign out
             </button>

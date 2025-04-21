@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Carousel = ({ images }) => {
+const Carousel = ({ images,fullWidth }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 

@@ -2,7 +2,7 @@ import { useInView } from "react-intersection-observer";
 import EventsCard from "../../components/card/EventsCard";
 
 export default function AnimatedEventCategory({ categoryName, events, showAll }) {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.4 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
     <div key={categoryName} className="mb-12" ref={ref}>
