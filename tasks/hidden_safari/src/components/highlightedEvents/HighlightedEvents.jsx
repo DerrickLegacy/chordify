@@ -32,7 +32,7 @@ export default function HighlightedEvents({ camps, highlightedEvents }) {
       style={visibilityStyle}
       className="relative py-8 px-4 sm:px-10 md:px-12 mx-auto md:max-w-[85%] text-center"
     >
-      <h2 className="text-3xl md:text-5xl font-bold text-[#c0392b]">
+      <h2 className="text-3xl md:text-5xl font-bold text-[#e27160]">
         Highlighted Events
       </h2>
       <p className="text-lg md:text-2xl text-gray-700 mt-2 max-w-3xl mx-auto">

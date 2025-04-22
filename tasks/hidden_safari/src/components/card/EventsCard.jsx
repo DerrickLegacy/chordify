@@ -2,8 +2,11 @@ import React from "react";
 
 import Carousel from "../../components/carousel/Carousel";
 import { FaStar, FaRegCalendarAlt, FaClock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function EventsCard({event}) {
+  const navigate =useNavigate();
+  console.log(event.id);
 
   return (
     <article
@@ -55,8 +58,7 @@ export default function EventsCard({event}) {
           </div>
         </div>
       </div>
-  
-      <button className="mt-6 w-full bg-gradient-to-r from-[#f84d32] to-orange-500 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center">
+      <button onClick={()=>navigate(`/event-details/${event.id}`)} className="mt-6 w-full bg-gradient-to-r from-[#f84d32] to-orange-500 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center">
         More
         <svg
           className="w-4 h-4 ml-2"

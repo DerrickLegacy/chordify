@@ -38,7 +38,7 @@ function App() {
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/events" element={<Events />} />
-                  <Route path="/event-details" element={<EventDetails />} />
+                  <Route path="/event-details/:eventID" element={<EventDetails />} />
                   <Route path="/about" element={<AboutUs />} />
                   <Route path="/user-profile/" element={<UserProfile />} />
                   <Route path="/team" element={<Team />}>

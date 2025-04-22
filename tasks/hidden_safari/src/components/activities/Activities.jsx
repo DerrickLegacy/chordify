@@ -45,7 +45,7 @@ export default function Activities({
     <section className={`py-0 md:py-8 ${toggleBackgroundColor ? "bg-[#fce9e6]" : ""}`}>
       <div className="px-6 md:px-12 mx-auto max-w-[85%]">
         <div ref={boxRef} style={visibilityStyle} className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#c0392b]">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#e27160]">
             {activityTitile}
           </h2>
           <h3 className="text-xl md:text-2xl text-gray-700 mt-2 max-w-3xl mx-auto">

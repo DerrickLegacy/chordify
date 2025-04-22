@@ -1,5 +1,3 @@
-// src/config/url.js
-
 const API_PREFIX = import.meta.env.VITE_API_URL;
 
 export const API_URL = {
@@ -13,4 +11,5 @@ export const API_URL = {
   ALL_EVENTS: `${API_PREFIX}events/all-events`,
   TEAM: `${API_PREFIX}team`,
   ABOUT: `${API_PREFIX}info/about-us`,
+  AN_EVENT: (id) => `${API_PREFIX}events/${id}`,
 };
